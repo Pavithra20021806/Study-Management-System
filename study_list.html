@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDY MANAGEMENT</title>
+
+        <h1><center>STUDY MANAGEMENT</center></h1>
+        <style>
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 10px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .container {
+                display: fles;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+</head>
+<body>
+        <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Study Name</th>
+                    <th>Study Phase</th>
+                    <th>Study Name</th>
+                    <th>Study Description</th>
+                    <th>Attached</th>
+                    <th>Actions</th>
+                </tr>
+            
+            </thead>
+            {% for study in studies %}
+                <tr>
+                    <td>{{ study.id }}</td>
+                    <td>{{ study.study_name }}</td>
+                    <td>{{ study.study_phase }}</td>
+                    <td>{{ study.sponser_name }}</td>
+                    <td>{{ study.study_description }}</td>
+                    <td>
+                        {% if study.attached_file %}
+                            <a href="{{ study.attached_file.url }}">View file</a>
+                        {% else %}
+                            No file Attached
+                        {% endif %}
+                    </td>
+                    <td><a href="{% url 'view_study' study.pk %}">View</a>
+                        <a href="{% url 'edit_study' study.pk %}">Edit</a>
+                        <a href="{% url 'delete_study' study.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+       </table>
+
+</br>
+     <a href="{% url 'add_study' %}"><center><b>Add Study</b></center></a>
+     
+</div>            
+</body>
+</html>

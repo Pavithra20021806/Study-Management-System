@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>View Study</title>
+</head>
+<body>
+    <h1><u>STUDY DETAILS</u></h1>
+    <p><strong>Study Name:</strong> {{ study.study_name }}</p>
+    <p><strong>Study Phase:</strong> {{ study.study_phase }}</p>
+    <p><strong>Sponser name:</strong> {{ study.sponser_name }}</p>
+    <p><strong>Description:</strong> {{ study.study_description }}</p>
+    <a href="{% url 'study_list' %}">Cancel</a>
+</body>
+</html>
